@@ -1,0 +1,40 @@
+{
+  "name": "flac-parser",
+  "version": "0.3.0",
+  "description": "small streaming parser for flac audio files",
+  "main": "flacParser.js",
+  "scripts": {
+    "test": "mocha tests/*.js -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theporchrat/flac-info-parser"
+  },
+  "keywords": [
+    "flac",
+    "stream",
+    "parser",
+    "metadata",
+    "vorbis-comment",
+    "comments",
+    "audio"
+  ],
+  "author": "Jason Quense @theporchrat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theporchrat/flac-info-parser/issues"
+  },
+  "homepage": "https://github.com/theporchrat/flac-info-parser",
+  "dependencies": {
+    "stream-tokenizr": "~0.3.0",
+    "lodash": "~2.4.1",
+    "debuglog": "~1.0.1",
+    "vorbis-parser": "~0.3.1"
+  },
+  "devDependencies": {
+    "chai": "~1.9.0",
+    "mocha": "~1.17.1",
+    "sinon-chai": "~2.5.0",
+    "sinon": "~1.8.2"
+  }
+}
