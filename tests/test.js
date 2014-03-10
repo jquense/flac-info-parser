@@ -21,7 +21,7 @@ describe('when parsing an Ogg Stream', function(){
                 tags[t.type] = t.value;
             })
             .on('end', function(){
-                console.log(tags)
+
                 tags.should.have.property('duration' ).that.is.closeTo(10, 0.1)
                 tags.should.have.property('minBlockSize' ).that.equals(4608)
                 tags.should.have.property('maxBlockSize' ).that.equals(4608)
