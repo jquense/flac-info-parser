@@ -11,7 +11,7 @@ module.exports = FlacParser;
 inherits(FlacParser, Tokenizr);
 
 function FlacParser(){
-    if ( !(this instanceof FlacParser) ) 
+    if ( !(this instanceof FlacParser) )
         return new FlacParser();
 
     Tokenizr.call(this, { objectMode: true })
@@ -92,12 +92,13 @@ FlacParser.prototype.parseFlacProps = function(buf, tokens){
         sampleRate: binary.readUInt24BE(buf, 10) >> 4,
         channels: ((buf[12] >> 1) & 0x7) + 1,
         bitsPerSample: ((buf.readUInt16BE(12) >> 4 ) & 0xF) + 1, //first 4 bits of byte 13
-        samplesInStream: buf.readUInt32BE(14) //need to also add last 4 bytes of 13
+        samplesInStream: buf.readUInt32BE(14), //need to also add last 4 bytes of 13
+        md5sum: buf.slice(18, 34).toString('hex')
     }
 
     tokens.properties.duration =  (tokens.properties.samplesInStream / tokens.properties.sampleRate )
 
-    if ( ( buf[13] & 0xF ) !== 0 ) 
+    if ( ( buf[13] & 0xF ) !== 0 )
         debug('samplesInStream number is larger than 32bits, i\'m to lazy to do that math')
 }
 

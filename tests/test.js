@@ -20,11 +20,12 @@ describe('when parsing an Ogg Stream', function(){
             .on('data', function(t){
                 tags[t.type] = t.value;
             })
-            .on('end', function(){
+            .on('finish', function(){
 
                 tags.should.have.property('duration' ).that.is.closeTo(10, 0.1)
                 tags.should.have.property('minBlockSize' ).that.equals(4608)
                 tags.should.have.property('maxBlockSize' ).that.equals(4608)
+                tags.should.have.property('md5sum' ).that.equals('e319cb440fc918fd04a1b2f406fbbc3a')
 
                 tags.should.have.property('minFrameSize' ).that.equals(11)
                 tags.should.have.property('maxFrameSize' ).that.equals(11)
